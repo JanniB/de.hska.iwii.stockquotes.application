@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_c3AF0MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.application" bindingContexts="_c3AF2cjYEeSyMNYR5xypkQ">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_c3AF0cjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.window.main" label="StockQuotes Application" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_sKFDIBMcEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.perspectivestack.0">
+      <children xsi:type="advanced:Perspective" xmi:id="_sbT9EBMcEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.perspective.0">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_uoQVwBMcEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.partsashcontainer.0">
+          <children xsi:type="basic:PartStack" xmi:id="_xCim4BMcEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.partstack.0">
+            <children xsi:type="basic:Part" xmi:id="_xTLD4BMcEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.part.aktuellekurse" contributionURI="bundleclass://de.hska.iwii.stockquotes.application/de.hska.iwii.stockquotes.application.parts.ViewPart" label="Aktuelle Kurse"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_H8Aj4BMbEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.menu.0">
+      <children xsi:type="menu:Menu" xmi:id="_avVgABMbEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.menu.datei" label="Datei">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_f4hAUBMbEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.handledmenuitem.erneuern" label="Erneuern" mnemonics="" command="_WIvgoBMhEee9YJe37A0e1A"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_pkR7ABMbEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.handledmenuitem.optionen" label="Optionen" command="_UxNX4BMfEee9YJe37A0e1A"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_rW5IIBMbEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.handledmenuitem.beenden" label="Beenden" command="_wjT3wBMdEee9YJe37A0e1A"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_9SOBEBMiEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.trimbar.0">
+      <children xsi:type="menu:ToolBar" xmi:id="_-ZjckBMiEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.toolbar.0">
+        <children xsi:type="menu:HandledToolItem" xmi:id="__i1Y0BMiEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.refresh" label="Erneuern" command="_WIvgoBMhEee9YJe37A0e1A"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_x41gQBMdEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.quitHandler" contributionURI="bundleclass://de.hska.iwii.stockquotes.application/de.hska.iwii.stockquotes.application.handler.QuitHandler" command="_wjT3wBMdEee9YJe37A0e1A"/>
+  <handlers xmi:id="_WyUUABMfEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.proxyHandler" contributionURI="bundleclass://de.hska.iwii.stockquotes.application/de.hska.iwii.stockquotes.application.handler.ProxyHandler" command="_UxNX4BMfEee9YJe37A0e1A"/>
+  <handlers xmi:id="_ZICjUBMhEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.refreshHandler" contributionURI="bundleclass://de.hska.iwii.stockquotes.application/de.hska.iwii.stockquotes.application.handler.RefreshHandler" command="_WIvgoBMhEee9YJe37A0e1A"/>
+  <bindingTables xmi:id="_2gIioBO5Eee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.bindingtable.0" bindingContext="_c3AF2cjYEeSyMNYR5xypkQ">
+    <bindings xmi:id="_23eEkBO5Eee9YJe37A0e1A" elementId="" keySequence="M1+R" command="_WIvgoBMhEee9YJe37A0e1A"/>
+    <bindings xmi:id="_YKZoYBO7Eee9YJe37A0e1A" elementId="" keySequence="M1+Q" command="_wjT3wBMdEee9YJe37A0e1A"/>
+  </bindingTables>
+  <rootContext xmi:id="_c3AF2cjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_c3AF2sjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_c3AF28jYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_wjT3wBMdEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.quitCommand" commandName="quitCommand"/>
+  <commands xmi:id="_UxNX4BMfEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.proxyCommand" commandName="proxyCommand"/>
+  <commands xmi:id="_WIvgoBMhEee9YJe37A0e1A" elementId="de.hska.iwii.stockquotes.application.refreshCommand" commandName="refreshCommand"/>
+  <addons xmi:id="_c3AF0sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_c3AF08jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_c3AF1MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_c3AF1cjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_c3AF1sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_c3AF18jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_c3AF2MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
