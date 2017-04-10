@@ -16,12 +16,10 @@ public class TableDataContentProvider implements IStructuredContentProvider {
 
 	@Override
 	public void dispose() {
-		// TODO
 	}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// TODO
 	}
 
 }
