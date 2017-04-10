@@ -1,5 +1,7 @@
 package de.hska.iwii.stockquotes.provider;
 
+import java.text.NumberFormat;
+
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -11,7 +13,12 @@ import de.hska.iwii.stockquotes.net.StockData.CurrentPriceChange;
 public class CurrentPriceLabelProvider  extends ColumnLabelProvider {
 	@Override
 	public String getText(Object element) {
-		return String.valueOf(((TableData) element).getCurrentPrice());
+		TableData data = (TableData) element;
+		if (data.getCurrentPrice() != null) {
+			NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+			return currencyFormatter.format(data.getCurrentPrice());
+		}
+		return null;
 	}
 	
 	@Override
