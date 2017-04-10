@@ -1,16 +1,11 @@
 package de.hska.iwii.stockquotes.application.parts;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.xml.transform.Source;
 
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.TableViewer;
@@ -27,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
-
+import de.hska.iwii.stockquotes.model.ProxyData;
 import de.hska.iwii.stockquotes.model.TableData;
 import de.hska.iwii.stockquotes.net.IStockQuotes;
 import de.hska.iwii.stockquotes.net.StockData;
@@ -40,18 +35,24 @@ import de.hska.iwii.stockquotes.provider.DateLabelProvider;
 import de.hska.iwii.stockquotes.provider.DayHighPriceLabelProvider;
 import de.hska.iwii.stockquotes.provider.DayLowPriceLabelProvider;
 import de.hska.iwii.stockquotes.provider.TableDataContentProvider;
+import de.hska.iwii.stockquotes.thread.FetchThread;
 
 @Creatable
+@Singleton
 public class ViewPart {
 	private TableViewer _viewer;
 	private Combo _index;
 	private Text _filter;
 	private Combo _source;
 	private ArrayList<TableData> _tableDataModel = new ArrayList<>();
+	private Thread _fetchThread;
+	private IStockQuotes _currentSource;
 	@Inject private StockQuotesYahoo _yahooSource;
 	@Inject private StockQuotesSimulation _simulationSource;
+	@Inject private ProxyData _proxyData;
 
-	@PostConstruct
+	// @PostConstruct
+	@Focus
 	public void createContents(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 		Composite dataBar = new Composite(parent, SWT.NONE);
@@ -69,7 +70,7 @@ public class ViewPart {
 		label3.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		label3.setText("Datenquelle");
 		_index = new Combo(dataBar, SWT.BORDER);
-		for(String str: IStockQuotes.ALL_STOCK_INDEXES) {
+		for (String str : IStockQuotes.ALL_STOCK_INDEXES) {
 			_index.add(str);
 		}
 		_index.select(0);
@@ -83,7 +84,6 @@ public class ViewPart {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// Not necessary
-				// TODO
 			}
 		});
 
@@ -105,18 +105,16 @@ public class ViewPart {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// Not necessary
-				// TODO
 			}
 
 		});
 		_filter.setText("optional");
 		_filter.setEnabled(false);
-		
-		
+
 		_source = new Combo(dataBar, SWT.BORDER);
 		_source.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		_source.add("Yahoo-Server");
 		_source.add("Simulation");
+		_source.add("Yahoo-Server");
 		_source.select(0);
 		_source.addSelectionListener(new SelectionListener() {
 
@@ -167,32 +165,37 @@ public class ViewPart {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		getContent(_simulationSource, IStockQuotes.FTSE100);
-		_viewer.setInput(_tableDataModel);
+		refreshContent();
 	}
 
 	public void refreshContent() {
-		IStockQuotes quotes;
-		if(_source.getText().equals(_yahooSource)) {
-			quotes = _yahooSource;
+		IStockQuotes quotes = getCurrentSource();
+		String stockIndex = _index.getText();
+		if (!_proxyData.getIsActive()) {
+			quotes.setProxy(null, 0);
 		} else {
-			quotes = _simulationSource;
+			quotes.setProxy(_proxyData.getInetAdress(), Integer.valueOf(_proxyData.getPort()));
+			quotes.setProxyAuthentication(_proxyData.getUsername(), _proxyData.getPassword());
 		}
-		getContent(quotes, _index.getText());
-		_viewer.setInput(_tableDataModel);
+		
+		_fetchThread = new FetchThread(_viewer, quotes, stockIndex);
+		_fetchThread.start();
 	}
-	
-	private void getContent(IStockQuotes source, String stockIndex) {
-		_tableDataModel = new ArrayList<>();
-		try {
-			List<StockData> data = source.requestDataSync(stockIndex);
-			for (StockData d : data) {
-				_tableDataModel.add(new TableData(d.getCompanyShortName(), d.getCompanyName(), d.getCurrentPrice(),
-						d.getDayHighPrice(), d.getDayLowPrice(), d.getDate(), d.getPriceChange()));
+
+	private IStockQuotes getCurrentSource() {
+		if (_currentSource != null && _currentSource.getName().equals(_source.getText())) {
+			return _currentSource;
+		} else {
+			if (_source.getText().equals(_yahooSource.getName())) {
+				_currentSource = _yahooSource;
+				_currentSource.reset();
+				return _currentSource;
+			} else {
+				_currentSource = _simulationSource;
+				_currentSource.reset();
+				return _currentSource;
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
+
 	}
-	
 }

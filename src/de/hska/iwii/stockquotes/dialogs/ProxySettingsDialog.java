@@ -1,8 +1,11 @@
 package de.hska.iwii.stockquotes.dialogs;
 
+import javax.inject.Singleton;
+
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -160,10 +163,8 @@ public class ProxySettingsDialog extends TitleAreaDialog {
 		}
 	}
 
-//	@Override
-//	protected void buttonPressed(int buttonId) {
-//		System.out.println("OK?    " + (buttonId == IDialogConstants.OK_ID));
-//		System.out.println("Cancel?" + (buttonId == IDialogConstants.CANCEL_ID));
-//		close();
-//	}
+	@Override
+	protected void buttonPressed(int buttonId) {
+		close();
+	}
 }

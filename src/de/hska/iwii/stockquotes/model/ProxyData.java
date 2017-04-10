@@ -3,6 +3,12 @@ package de.hska.iwii.stockquotes.model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import javax.inject.Singleton;
+
+import org.eclipse.e4.core.di.annotations.Creatable;
+
+@Creatable
+@Singleton
 public class ProxyData {
 	public static final String PROPERTY_IS_ACTIVE = "isActive";
 	public static final String PROPERTY_INET_ADRESS = "inetAdress";

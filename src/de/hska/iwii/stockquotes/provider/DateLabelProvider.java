@@ -8,6 +8,10 @@ public class DateLabelProvider extends ColumnLabelProvider {
 	
 	@Override
 	public String getText(Object element) {
-		return ((TableData) element).getDate().toString();
+		TableData data = ((TableData) element);
+		if (data.getDate() != null) {
+			return data.getDate().toString();
+		}
+		return null;
 	}
 }

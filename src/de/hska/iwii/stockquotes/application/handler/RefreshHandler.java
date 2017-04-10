@@ -1,7 +1,6 @@
 package de.hska.iwii.stockquotes.application.handler;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.workbench.IWorkbench;
@@ -14,8 +13,6 @@ public class RefreshHandler {
 
 	@Execute
 	public void execute(IWorkbench workbench, Shell shell){
-		System.out.println("TODO");
-		System.out.println(view.toString());
-		//view.refreshContent();
+		view.refreshContent();
 	}
 }
