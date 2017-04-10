@@ -10,11 +10,11 @@ import org.eclipse.e4.core.di.annotations.Creatable;
 @Creatable
 @Singleton
 public class ProxyData {
-	public static final String PROPERTY_IS_ACTIVE = "isActive";
-	public static final String PROPERTY_INET_ADRESS = "inetAdress";
-	public static final String PROPERTY_PORT = "port";
-	public static final String PROPERTY_USERNAME = "username";
-	public static final String PROPERTY_PASSWORD = "password";
+	public static final String PROPERTY_IS_ACTIVE = "isActive"; //$NON-NLS-1$
+	public static final String PROPERTY_INET_ADRESS = "inetAdress"; //$NON-NLS-1$
+	public static final String PROPERTY_PORT = "port"; //$NON-NLS-1$
+	public static final String PROPERTY_USERNAME = "username"; //$NON-NLS-1$
+	public static final String PROPERTY_PASSWORD = "password"; //$NON-NLS-1$
 	
 	private boolean isActive;
 	private String inetAdress;

@@ -47,9 +47,9 @@ public class ProxySettingsDialog extends TitleAreaDialog {
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 		setTitleImage(getShell().getDisplay().getSystemImage(SWT.ICON_WORKING));
-		setMessage("Innerhalb der Hochschule muss der Proxy-Server verwendet werden.", IMessageProvider.INFORMATION);
-		setTitle("Proxy-Einstellungen f\u00fcr den Netzwerkzugriff");
-		getShell().setText("Proxy-Einstellungen");
+		setMessage(Messages.ProxySettingsDialog_0, IMessageProvider.INFORMATION);
+		setTitle(Messages.ProxySettingsDialog_1);
+		getShell().setText(Messages.ProxySettingsDialog_2);
 		return contents;
 	}
 
@@ -70,11 +70,11 @@ public class ProxySettingsDialog extends TitleAreaDialog {
 		contents.setLayout(layout);
 
 		Label label = new Label(contents, SWT.BEGINNING);
-		label.setText("HTTP-Proxy:");
+		label.setText(Messages.ProxySettingsDialog_3);
 		label.setLayoutData(new GridData(SWT.DEFAULT, SWT.CENTER, false, false));
 
 		_proxyEnablement = new Button(contents, SWT.CHECK);
-		_proxyEnablement.setText("verwenden");
+		_proxyEnablement.setText(Messages.ProxySettingsDialog_4);
 		//_proxyActive.setSelection(true);
 		_proxyEnablement.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		_proxyEnablement.addSelectionListener(new SelectionListener() {
@@ -91,28 +91,28 @@ public class ProxySettingsDialog extends TitleAreaDialog {
 		});
 
 		_proxyNameLabel = new Label(contents, SWT.BEGINNING);
-		_proxyNameLabel.setText("Proxyname:");
+		_proxyNameLabel.setText(Messages.ProxySettingsDialog_5);
 		_proxyNameLabel.setLayoutData(new GridData(SWT.DEFAULT, SWT.CENTER, false, false));
 
 		_proxyNameText = new Text(contents, SWT.BORDER);
 		_proxyNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		_proxyPortLabel = new Label(contents, SWT.BEGINNING);
-		_proxyPortLabel.setText("Proxyport:");
+		_proxyPortLabel.setText(Messages.ProxySettingsDialog_6);
 		_proxyPortLabel.setLayoutData(new GridData(SWT.DEFAULT, SWT.CENTER, false, false));
 
 		_proxyPortText = new Text(contents, SWT.BORDER);
 		_proxyPortText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		_userNameLabel = new Label(contents, SWT.BEGINNING);
-		_userNameLabel.setText("Benutzername:");
+		_userNameLabel.setText(Messages.ProxySettingsDialog_7);
 		_userNameLabel.setLayoutData(new GridData(SWT.DEFAULT, SWT.CENTER, false, false));
 
 		_userNameText = new Text(contents, SWT.BORDER);
 		_userNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		_passwortLabel = new Label(contents, SWT.BEGINNING);
-		_passwortLabel.setText("Passwort:");
+		_passwortLabel.setText(Messages.ProxySettingsDialog_8);
 		_passwortLabel.setLayoutData(new GridData(SWT.DEFAULT, SWT.CENTER, false, false));
 
 		_passwortText = new Text(contents, SWT.BORDER | SWT.PASSWORD);

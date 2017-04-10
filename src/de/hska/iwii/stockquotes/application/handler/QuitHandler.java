@@ -14,8 +14,8 @@ public class QuitHandler {
 	@Execute
 	public void execute(IWorkbench workbench, IEclipseContext context,
 			@Named(IServiceConstants.ACTIVE_SHELL) Shell shell){
-		if (MessageDialog.openConfirm(shell, "StockQuotes Application",
-				"Anwendung beenden?")) {
+		if (MessageDialog.openConfirm(shell, "StockQuotes Application", //$NON-NLS-1$
+				"Anwendung beenden?")) { //$NON-NLS-1$
 			workbench.close();
 		}
 	}
