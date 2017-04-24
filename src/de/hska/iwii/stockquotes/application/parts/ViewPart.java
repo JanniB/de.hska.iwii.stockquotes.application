@@ -74,7 +74,7 @@ public class ViewPart {
 		Label label3 = new Label(dataBar, SWT.NONE);
 		label3.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		label3.setText(Messages.ViewPart_2);
-		_index = new Combo(dataBar, SWT.BORDER);
+		_index = new Combo(dataBar, SWT.BORDER | SWT.READ_ONLY);
 		for (String str : IStockQuotes.ALL_STOCK_INDEXES) {
 			_index.add(str);
 		}
@@ -116,7 +116,7 @@ public class ViewPart {
 		_filter.setText("optional"); //$NON-NLS-1$
 		_filter.setEnabled(false);
 
-		_source = new Combo(dataBar, SWT.BORDER);
+		_source = new Combo(dataBar, SWT.BORDER | SWT.READ_ONLY);
 		_source.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		_source.add("Simulation"); //$NON-NLS-1$
 		_source.add("Yahoo-Server"); //$NON-NLS-1$
@@ -188,7 +188,7 @@ public class ViewPart {
 		if (_job == null || _job.getState() == Job.NONE) {
 			IStockQuotes quotes = getCurrentSource();
 			String stockIndex = _index.getText();
-			if (!_proxyData.getIsActive()) {
+			if (!_proxyData.getIsActive() || !_proxyData.isFilled()) {
 				quotes.setProxy(null, 0);
 			} else {
 				quotes.setProxy(_proxyData.getInetAdress(), Integer.valueOf(_proxyData.getPort()));

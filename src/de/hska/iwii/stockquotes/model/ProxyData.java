@@ -59,6 +59,10 @@ public class ProxyData {
 	public String getPassword() {
 		return password;
 	}
+	
+	public boolean isFilled() {
+		return (inetAdress != null && port != null && username != null && password != null);
+	}
 
 	public void setPassword(String password) {
 		support.firePropertyChange(PROPERTY_PASSWORD, this.password, this.password = password);
